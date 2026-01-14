@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>El Arte del Queso - Tradición y Sabor</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            background-color: #f5f2e9;
+            color: #4a3c28;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 50px;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, #8b7355, #a0896d);
+            color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .subtitle {
+            font-size: 1.2em;
+            font-style: italic;
+            opacity: 0.9;
+        }
+
+        .queso-card {
+            background: white;
+            margin-bottom: 40px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            border: 3px solid #d4c4a0;
+            transition: transform 0.3s ease;
+        }
+
+        .queso-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .queso-header {
+            background: #8b7355;
+            color: white;
+            padding: 25px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .queso-header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(
+                45deg,
+                rgba(255,255,255,0.1) 0px,
+                rgba(255,255,255,0.1) 10px,
+                transparent 10px,
+                transparent 20px
+            );
+        }
+
+        .queso-title {
+            font-size: 2.2em;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .queso-origin {
+            font-size: 1.1em;
+            opacity: 0.9;
+            position: relative;
+            z-index: 1;
+        }
+
+        .queso-content {
+            padding: 30px;
+        }
+
+        .section {
+            margin-bottom: 25px;
+            padding: 20px;
+            background: #faf8f3;
+            border-radius: 8px;
+            border-left: 5px solid #a0896d;
+        }
+
+        .section h3 {
+            color: #6b5b47;
+            font-size: 1.4em;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .section h3::before {
+            content: '🧀';
+            margin-right: 10px;
+            font-size: 1.2em;
+        }
+
+        .historia h3::before { content: '📜'; }
+        .sabor h3::before { content: '👅'; }
+        .caracteristicas h3::before { content: '⭐'; }
+        .vida h3::before { content: '⏰'; }
+        .recetas h3::before { content: '👨‍🍳'; }
+
+        .caracteristicas-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 10px;
+        }
+
+        .caracteristica {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            border: 2px solid #e6dcc6;
+            text-align: center;
+        }
+
+        .caracteristica strong {
+            color: #8b7355;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .recetas-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .receta-item {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            border: 2px solid #e6dcc6;
+            transition: background-color 0.3s ease;
+        }
+
+        .receta-item:hover {
+            background-color: #f0ebe0;
+        }
+
+        .receta-item strong {
+            color: #6b5b47;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .vida-timeline {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .timeline-item {
+            background: white;
+            padding: 10px 15px;
+            border-radius: 20px;
+            border: 2px solid #d4c4a0;
+            text-align: center;
+            min-width: 120px;
+        }
+
+        .timeline-item strong {
+            color: #8b7355;
+            display: block;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 60px;
+            padding: 30px;
+            background: #8b7355;
+            color: white;
+            border-radius: 10px;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2em;
+            }
+            
+            .caracteristicas-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .vida-timeline {
+                flex-direction: column;
+            }
+            
+            .timeline-item {
+                margin-bottom: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>El Arte del Queso</h1>
+            <p class="subtitle">Tradición, Historia y Sabor en cada bocado</p>
+        </header>
+
+        <!-- MANCHEGO -->
+        <div class="queso-card">
+            <div class="queso-header">
+                <h2 class="queso-title">Queso Manchego</h2>
+                <p class="queso-origin">Castilla-La Mancha, España</p>
+            </div>
+            <div class="queso-content">
+                <div class="section historia">
+                    <h3>Historia y Tradición</h3>
+                    <p>El Manchego es uno de los quesos más emblemáticos de España, con más de 800 años de tradición. Elaborado exclusivamente con leche de oveja manchega en la región de Castilla-La Mancha, este queso ha sido testigo de la historia española. Don Quijote mismo lo menciona en sus aventuras, convirtiendo al Manchego en símbolo de la cultura española.</p>
+                </div>
+
+                <div class="section sabor">
+                    <h3>Perfil de Sabor</h3>
+                    <p>Sabor intenso y ligeramente picante que se intensifica con la maduración. Presenta notas dulces iniciales que evolucionan hacia un final salado y persistente. Su textura es firme pero cremosa, con pequeños ojos distribuidos uniformemente. El aroma es lácteo con toques herbáceos propios de la alimentación de las ovejas manchegas.</p>
+                </div>
+
+                <div class="section caracteristicas">
+                    <h3>Características Únicas</h3>
+                    <div class="caracteristicas-grid">
+                        <div class="caracteristica">
+                            <strong>Textura</strong>
+                            Firme y cremosa
+                        </div>
+                        <div class="caracteristica">
+                            <strong>Grasa</strong>
+                            45-50%
+                        </div>
+                        <div class="caracteristica">
+                            <strong>Corteza</strong>
+                            Natural, con marcas de esparto
+                        </div>
+                        <div class="caracteristica">
+                            <strong>Color</strong>
+                            Amarillo marfil
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section vida">
+                    <h3>Proceso de Maduración</h3>
+                    <div class="vida-timeline">
+                        <div class="timeline-item">
+                            <strong>0-60 días</strong>
+                            <span>Fresco</span>
+                        </div>
+                        <div class="timeline-item">
+                            <strong>2-4 meses</strong>
+                            <span>Semicurado</span>
+                        </div>
+                        <div class="timeline-item">
+                            <strong>4-10 meses</strong>
+                            <span>Curado</span>
+                        </div>
+                        <div class="timeline-item">
+                            <strong>+12 meses</strong>
+                            <span>Añejo</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section recetas">
+                    <h3>Usos Culinarios Recomendados</h3>
+                    <div class="recetas-list">
+                        <div class="receta-item">
+                            <strong>Tabla de Quesos</strong>
+                            Acompañado de membrillo y nueces
+                        </div>
+                        <div class="receta-item">
+                            <strong>Croquetas Manchegas</strong>
+                            Base cremosa con toque tradicional
+                        </div>
+                        <div class="receta-item">
+                            <strong>Ensalada de Rúcula</strong>
+                            Láminas finas con vinagreta de jerez
+                        </div>
+                        <div class="receta-item">
+                            <strong>Migas Manchegas</strong>
+                            Gratinado por encima
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ROQUEFORT -->
+        <div class="queso-card">
+            <div class="queso-header">
+                <h2 class="queso-title">Roquefort</h2>
+                <p class="queso-origin">Aveyron, Francia</p>
+            </div>
+            <div class="queso-content">
+                <div class="section historia">
+                    <h3>Historia y Tradición</h3>
+                    <p>La leyenda cuenta que el Roquefort nació por accidente cuando un joven pastor olvidó su almuerzo de queso y pan en una cueva. Meses después, descubrió que el moho había transformado el queso en una delicia. Desde 1925, tiene Denominación de Origen Controlada y solo puede elaborarse con leche de oveja Lacaune en las cuevas naturales del pueblo de Roquefort-sur-Soulzon.</p>
+                </div>
+
+                <div class="section sabor">
+                    <h3>Perfil de Sabor</h3>
+                    <p>Sabor intenso, salado y picante con un final persistente y complejo. El moho Penicillium roqueforti le aporta notas terrosas y minerales únicas. Su textura es cremosa y untuosa, casi mantecosa, que se deshace en el paladar. El aroma es penetrante, con toques de humedad y sotobosque que evocan las cuevas donde madura.</p>
+                </div>
+
+                <div class="section caracteristicas">
+                    <h3>Características Únicas</h3>
+                    <div class="caracteristicas-grid">
+                        <div class="caracteristica">
+                            <strong>Textura</strong>
+                            Cremosa y untuosa
+                        </div>
+                        <div class="caracteristica">
+                            <strong>Grasa</strong>
+                            52%
+                        </div>
+                        <div class="caracteristica">
+                            <strong>Vetas</strong>
+                            Azul-verdosas
+                        </div>
+                        <div class="caracteristica">
+                            <strong>Humedad</strong>
+                            Alta (95%)
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section vida">
+                    <h3>Proceso de Maduración</h3>
+                    <div class="vida-timeline">
+                        <div class="timeline-item">
+                            <strong>0-15 días</strong>
+                            <span>Salado</span>
+                        </div>
+                        <div class="timeline-item">
+                            <strong>15-30 días</strong>
+                            <span>Pinchado</span>
+                        </div>
+                        <div class="timeline-item">
+                            <strong>2-3 meses</strong>
+                            <span>Maduración en cueva</span>
+                        </div>
+                        <div class="timeline-item">
+                            <strong>3+ meses</strong>
+                            <span>Listo para consumo</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section recetas">
+                    <h3>Usos Culinarios Recomendados</h3>
+                    <div class="recetas-list">
+                        <div class="receta-item">
+                            <strong>Ensalada de Peras</strong>
+                            Con nueces y vinagreta de miel
+                        </div>
+                        <div class="receta-item">
+                            <strong>Salsa para Steaks</strong>
+                            Fundido con nata y pimienta
+                        </div>
+                        <div class="receta-item">
+                            <strong>Tarta Salada</strong>
+                            Con cebolla caramelizada
+                        </div>
+                        <div class="receta-item">
+                            <strong>Canapés</strong>
+                            Sobre pan de nueces con miel
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PARMESANO -->
+        <div class="queso-card">
+            <div class="queso-header">
+                <h2 class="queso-title">Parmigiano-Reggiano</h2>
+                <p class="queso-origin">Emilia-Romaña, Italia</p>
+            </div>
+            <div class="queso-content">
+                <div class="section historia">
+                    <h3>Historia y Tradición</h3>
+                    <p>Conocido como el "Rey de los Quesos", el Parmigiano-Reggiano tiene más de 900 años de historia. Los monjes benedictinos lo crearon en el siglo XII en la región entre Parma y Reggio Emilia. Su método de producción permanece inalterado desde entonces, siendo elaborado solo con leche, sal y cuajo, sin aditivos. Cada rueda es única y refleja el terroir de la región.</p>
+                </div>
+
+                <div class="section sabor">
+                    <h3>Perfil de Sabor</h3>
+                    <p>Sabor complejo y equilibrado con notas dulces, saladas y umami. En boca presenta una textura granulosa característica con cristales de tirosina que aportan un crujido distintivo. El sabor evoluciona desde notas frutales y herbáceas hasta toques de nuez y mantequilla. Su aroma es lácteo intenso con matices de heno y frutos secos.</p>
+                </div>
+
+                <div class="section caracteristicas">
+                    <h3>Características Únicas</h3>
+                    <div class="caracteristicas-grid">
+                        <div class="caracteristica">
+                            <strong>Textura</strong>
+                            Granulosa con cristales
+                        </div>
+                        <div class="caracteristica">
+                            <strong>Grasa</strong>
+                            32%
+                        </div>
+                        <div class="caracteristica">
+                            <strong>Peso</strong>
+                            38-40 kg por rueda
+                        </div>
+                        <div class="caracteristica">
+                            <strong>Color</strong>
+                            Amarillo paja
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section vida">
+                    <h3>Proceso de Maduración</h3>
+                    <div class="vida-timeline">
+                        <div class="timeline-item">
+                            <strong>12 meses</strong>
+                            <span>Mínimo legal</span>
+                        </div>
+                        <div class="timeline-item">
+                            <strong>18-24 meses</strong>
+                            <span>Óptimo para rallar</span>
+                        </div>
+                        <div class="timeline-item">
+                            <strong>30-36 meses</strong>
+                            <span>Stravecchio</span>
+                        </div>
+                        <div class="timeline-item">
+                            <strong>40+ meses</strong>
+                            <span>Extra Stravecchio</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section recetas">
+                    <h3>Usos Culinarios Recomendados</h3>
+                    <div class="recetas-list">
+                        <div class="receta-item">
+                            <strong>Risotto</strong>
+                            Mantecado al final de la cocción
+                        </div>
+                        <div class="receta-item">
+                            <strong>Pasta</strong>
+                            Rallado fresco sobre cualquier pasta
+                        </div>
+                        <div class="receta-item">
+                            <strong>Carpaccio</strong>
+                            Láminas finas con rúcula y limón
+                        </div>
+                        <div class="receta-item">
+                            <strong>Soufflé</strong>
+                            Base perfecta para gratinados
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CAMEMBERT -->
+        <div class="queso-card">
+            <div class="queso-header">
+                <h2 class="queso-title">Camembert de Normandía</h2>
+                <p class="queso-origin">Normandía, Francia</p>
+            </div>
+            <div class="queso-content">
+                <div class="section historia">
+                    <h3>Historia y Tradición</h3>
+                    <p>Creado en 1791 por Marie Harel en el pueblo de Camembert, Normandía. La leyenda cuenta que un sacerdote de Brie le enseñó la técnica durante la Revolución Francesa. Napoleón III lo declaró su queso favorito, catapultando su fama. Su empaque en cajas de madera de álamo fue innovación de Eugène Ridel en 1890, permitiendo su distribución mundial.</p>
+                </div>
+
+                <div class="section sabor">
+                    <h3>Perfil de Sabor</h3>
+                    <p>Sabor suave y cremoso cuando está joven, desarrollando notas más intensas y terrosas con la maduración. La corteza aporta un ligero amargor que contrasta con el interior mantecoso. Presenta aromas de champiñones, humedad y sotobosque. Su textura evoluciona desde firme hasta completamente fluida en el centro cuando está perfectamente maduro.</p>
+                </div>
+
+                <div class="section caracteristicas">
+                    <h3>Características Únicas</h3>
+                    <div class="caracteristicas-grid">
+                        <div class="caracteristica">
+                            <strong>Textura</strong>
+                            Cremosa y fluida
+                        </div>
+                        <div class="caracteristica">
+                            <strong>Grasa</strong>
+                            45%
+                        </div>
+                        <div class="caracteristica">
+                            <strong>Corteza</strong>
+                            Blanca aterciopelada
+                        </div>
+                        <div class="caracteristica">
+                            <strong>Forma</strong>
+                            Cilíndrica pequeña
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section vida">
+                    <h3>Proceso de Maduración</h3>
+                    <div class="vida-timeline">
+                        <div class="timeline-item">
+                            <strong>0-7 días</strong>
+                            <span>Salado y secado</span>
+                        </div>
+                        <div class="timeline-item">
+                            <strong>1-2 semanas</strong>
+                            <span>Aparición del moho</span>
+                        </div>
+                        <div class="timeline-item">
+                            <strong>3-4 semanas</strong>
+                            <span>Maduración óptima</span>
+                        </div>
+                        <div class="timeline-item">
+                            <strong>5+ semanas</strong>
+                            <span>Muy maduro</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section recetas">
+                    <h3>Usos Culinarios Recomendados</h3>
+                    <div class="recetas-list">
+                        <div class="receta-item">
+                            <strong>Camembert al Horno</strong>
+                            Con ajo, romero y miel
+                        </div>
+                        <div class="receta-item">
+                            <strong>Tabla de Quesos</strong>
+                            Con pan artesanal y mermelada
+                        </div>
+                        <div class="receta-item">
+                            <strong>Tarta Tatin</strong>
+                            Versión salada con cebolla
+                        </div>
+                        <div class="receta-item">
+                            <strong>Fondue Normanda</strong>
+                            Con sidra y calvados
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- GOUDA -->
+        <div class="queso-card">
+            <div class="queso-header">
+                <h2 class="queso-title">Gouda</h2>
+                <p class="queso-origin">Países Bajos</p>
+            </div>
+            <div class="queso-content">
+                <div class="section historia">
+                    <h3>Historia y Tradición</h3>
+                    <p>El Gouda toma su nombre de la ciudad holandesa donde se comercializaba desde el siglo XIII. Los mercados de queso de Gouda eran famosos en toda Europa medieval. Su técnica de lavado de cuajada le da características únicas. Durante la Edad de Oro holandesa, se convirtió en símbolo de prosperidad y calidad, siendo exportado a través de las rutas comerciales marítimas.</p>
+                </div>
+
+                <div class="section sabor">
+                    <h3>Perfil de Sabor</h3>
+                    <p>Sabor dulce y suave cuando es joven, desarrollando complejidad caramelizada con la edad. Los Goudas añejos presentan cristales crocantes y notas de mantequilla, nuez y caramelo. Su textura pasa de semi-blanda y flexible a dura y granulosa. El aroma es lácteo y dulce, intensificándose hacia notas de toffee en las variedades maduras.</p>
+                </div>
+
+                <div class="section caracteristicas">
+                    <h3>Características Únicas</h3>
+                    <div class="caracteristicas-grid">
+                        <div class="caracteristica">
+                            <strong>Textura</strong>
+                            Variable según edad
+                        </div>
+                        <div class="caracteristica">
+                            <strong>Grasa</strong>
+                            48%
+                        </div>
+                        <div class="caracteristica">
+                            <strong>Corteza</strong>
+                            Encerada o natural
+                        </div>
+                        <div class="caracteristica">
+                            <strong>Color</strong>
+                            Amarillo dorado
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section vida">
+                    <h3>Proceso de Maduración</h3>
+                    <div class="vida-timeline">
+                        <div class="timeline-item">
+                            <strong>4 semanas</strong>
+                            <span>Joven (Jong)</span>
+                        </div>
+                        <div class="timeline-item">
+                            <strong>8-10 semanas</strong>
+                            <span>Semi-maduro</span>
+                        </div>
+                        <div class="timeline-item">
+                            <strong>16-18 semanas</strong>
+                            <span>Maduro (Belegen)</span>
+                        </div>
+                        <div class="timeline-item">
+                            <strong>2+ años</strong>
+                            <span>Muy añejo (Overjarig)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section recetas">
+                    <h3>Usos Culinarios Recomendados</h3>
+                    <div class="recetas-list">
+                        <div class="receta-item">
+                            <strong>Sándwiches</strong>
+                            Fundido en tostadas holandesas
+                        </div>
+                        <div class="receta-item">
+                            <strong>Fondue</strong>
+                            Mezclado con vino blanco
+                        </div>
+                        <div class="receta-item">
+                            <strong>Gratinados</strong>
+                            Coliflor y patatas al horno
+                        </div>
+                        <div class="receta-item">
+                            <strong>Macarrones</strong>
+                            Base cremosa para pasta
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <h3>🧀 El Arte del Queso 🧀</h3>
+            <p>Cada queso cuenta una historia de tradición, paciencia y maestría artesanal</p>
+        </footer>
+    </div>
+</body>
+</html>
